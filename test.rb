@@ -19,12 +19,6 @@ class DataStorageServerTest < Minitest::Test
     assert res["oid"].length > 0
   end
 
-  def test_put_empty_object
-    put '/data/foo', ''
-    assert_equal 400, last_response.status
-    assert_equal "Bad Request", last_response.body 
-  end
-
   def test_get
     put '/data/foo', 'some object'
     res1 = JSON.parse(last_response.body)
@@ -61,4 +55,11 @@ class DataStorageServerTest < Minitest::Test
     delete "/data/foo/nooope"
     assert_equal 404, last_response.status
   end
+
+  def test_put_empty_object
+    put '/data/foo', ''
+    assert_equal 400, last_response.status
+    assert_equal "Bad Request", last_response.body 
+  end
+
 end

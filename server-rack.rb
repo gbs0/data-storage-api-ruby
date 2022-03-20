@@ -5,11 +5,7 @@
 require 'rack'
 require 'json'
 require_relative './src/front_controller'
-require_relative './src/router/route'
-require_relative './src/router/registry'
-require_relative './src/router/mapper'
-require_relative './src/router'
-require_relative './src/routes'
+require_relative './src/router/main'
 
 Dir.glob("src/controllers/**/*.rb").each{ |file_path|
   file_name = File.basename(file_path, ".rb")

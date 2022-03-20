@@ -15,11 +15,10 @@ class FrontController
         end
 
         # Dispatch a controller action
-        
         def dispatch route, params = nil, req
             target = route.controller.split("#")
-            klass = Object.const_get target.first
-            instance = klass.new
+            controller = Object.const_get target.first
+            instance = controller.new
             instance.params = params
             instance.url_params = req.params
             instance.send(target.last)
